@@ -78,7 +78,7 @@ runs:
       working-directory: ${{ inputs.source-directory }}
 
     - name: Upload Results.
-      if: inputs.report
+      if: always() && inputs.report
       uses: actions/upload-artifact@v3
       with:
         name: ${{ inputs.report-key }}
