@@ -63,7 +63,7 @@ inputs:
   ignore-errors:
     description: Whether to continue on error.
     required: false
-    default: false
+    default: true
     type: boolean
 
 runs:
