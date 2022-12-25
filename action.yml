@@ -60,6 +60,12 @@ inputs:
     required: false
     type: string
 
+  ignore-errors:
+    description: Whether to continue on error.
+    required: false
+    default: false
+    type: boolean
+
 runs:
   using: "composite"
   steps:
@@ -73,12 +79,13 @@ runs:
         test: ${{ inputs.test-deps }}
 
     - name: Run Command.
+      continue-on-error: ${{ inputs.ignore-errors }}
       run: ${{ inputs.command }}
       shell: bash
       working-directory: ${{ inputs.source-directory }}
 
     - name: Upload Results.
-      if: inputs.report && always()
+      if: inputs.report
       uses: actions/upload-artifact@v3
       with:
         name: ${{ inputs.report-key }}
