@@ -79,7 +79,7 @@ runs:
         test: ${{ inputs.test-deps }}
 
     - name: Run Command.
-      continue-on-error: ${{ inputs.ignore-errors }}
+      continue-on-error: true
       run: ${{ inputs.command }}
       shell: bash
       working-directory: ${{ inputs.source-directory }}
