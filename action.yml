@@ -82,4 +82,4 @@ runs:
       uses: actions/upload-artifact@v3
       with:
         name: ${{ inputs.report-key }}
-        path: ${{ inputs.source-directory }}/${{ inputs.report-file }}
+        path: ${{ inputs.report-file }}
