@@ -3,7 +3,7 @@ name: "Run Command and Save Report"
 description: "Checkout Code, Setup Python, Install Dependencies and run Command"
 
 inputs:
-  deps-directory:
+  dependencies-directory:
     description: Where to search for requirements files.
     required: false
     default: "."
@@ -72,7 +72,7 @@ runs:
     - name: Load Cache & Dependencies.
       uses: cristovamsilva/python-dependencies-action@master
       with:
-        deps-directory: ${{ inputs.deps-directory }}
+        dependencies-directory: ${{ inputs.dependencies-directory }}
         application: ${{ inputs.application-deps }}
         quality: ${{ inputs.quality-deps }}
         security: ${{ inputs.security-deps }}
