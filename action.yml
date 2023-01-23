@@ -9,25 +9,25 @@ inputs:
     default: "."
     type: string
 
-  application-deps:
+  application-dependencies:
     description: Whether to install application dependencies.
     required: false
     default: false
     type: boolean
 
-  quality-deps:
+  quality-dependencies:
     description: Whether to install quality assurance dependencies.
     required: false
     default: false
     type: boolean
 
-  security-deps:
+  security-dependencies:
     description: Whether to install security dependencies.
     required: false
     default: false
     type: boolean
 
-  test-deps:
+  test-dependencies:
     description: Whether to install test dependencies.
     required: false
     default: false
@@ -50,8 +50,8 @@ inputs:
     default: false
     type: boolean
 
-  report-key:
-    description: Report Artifact Key.
+  report-path:
+    description: Report Artifact path.
     required: false
     type: string
 
@@ -73,10 +73,10 @@ runs:
       uses: cristovamsilva/python-dependencies-action@master
       with:
         dependencies-directory: ${{ inputs.dependencies-directory }}
-        application: ${{ inputs.application-deps }}
-        quality: ${{ inputs.quality-deps }}
-        security: ${{ inputs.security-deps }}
-        test: ${{ inputs.test-deps }}
+        application: ${{ inputs.application-dependencies }}
+        quality: ${{ inputs.quality-dependencies }}
+        security: ${{ inputs.security-dependencies }}
+        test: ${{ inputs.test-dependencies }}
 
     - name: Run Command.
       continue-on-error: input.ignore-errors
@@ -88,5 +88,5 @@ runs:
       if: inputs.report
       uses: actions/upload-artifact@v3
       with:
-        name: ${{ inputs.report-key }}
-        path: ${{ inputs.report-file }}
+        name: ${{ inputs.report-path }}
+        path: ${{ inputs.source-directory }}/${{ inputs.report-file }}
